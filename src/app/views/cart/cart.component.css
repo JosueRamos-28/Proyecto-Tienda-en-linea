@@ -1,0 +1,106 @@
+.store-name {
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
+  color: #28a745;
+  background: linear-gradient(45deg, #ff5050, #ffcc00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  text-align: center;
+  margin: 20px auto;
+  transition: color 0.3s ease;
+}
+
+.store-name:hover {
+  color: #e60000;
+}
+
+.cart-container {
+  width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 28px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-image {
+  width: 60px;
+  height: auto;
+  margin-right: 10px; /* Reduce el margen derecho */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-details h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #555;
+}
+
+.cart-item-details p {
+  font-size: 16px;
+  color: #999;
+}
+
+.empty-message {
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.boton.gradient {
+  background: linear-gradient(45deg, #007bff, #00d4ff);
+}

@@ -1,0 +1,51 @@
+<header class="header">
+  <a routerLink="/home" class="store-name">Fake Store</a>
+</header>
+
+<div class="user-profile">
+  <h2>Hola Josué</h2>
+  <h3>Mi Cuenta</h3>
+
+  <div class="profile-options">
+    <div class="option" (click)="navigateTo('orders')">
+      <mat-icon>inventory</mat-icon>
+      <span>Mis Órdenes</span>
+      <p>Información y seguimiento de tu pedido</p>
+    </div>
+    <div class="option" (click)="navigateTo('personal')">
+      <mat-icon>person</mat-icon>
+      <span>Información Personal</span>
+    </div>
+    <div class="option" (click)="navigateTo('cards')">
+      <mat-icon>credit_card</mat-icon>
+      <span>Mis Tarjetas</span>
+      <p>Lista de tarjetas guardadas</p>
+    </div>
+    <div class="option" (click)="navigateTo('addresses')">
+      <mat-icon>location_on</mat-icon>
+      <span>Mis Direcciones</span>
+    </div>
+    <div class="option" (click)="navigateTo('wishlist')">
+      <mat-icon>favorite</mat-icon>
+      <span>Lista de Deseos</span>
+      <p>Productos que deseas comprar</p>
+    </div>
+    <div class="option" (click)="navigateTo('returns')">
+      <mat-icon>question_answer</mat-icon>
+      <span>Devoluciones y Garantías</span>
+    </div>
+    <div class="option" (click)="navigateTo('payment')">
+      <mat-icon>account_balance_wallet</mat-icon>
+      <span>Opciones de Pago</span>
+    </div>
+    <div class="option" (click)="navigateTo('password')">
+      <mat-icon>lock</mat-icon>
+      <span>Cambiar Contraseña</span>
+    </div>
+    <div class="option" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Salir</span>
+      <p>Esperamos que vuelvas pronto</p>
+    </div>
+  </div>
+</div>

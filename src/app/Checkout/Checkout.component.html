@@ -1,0 +1,107 @@
+<header class="header">
+  <a routerLink="/home" class="store-name">Fake Store</a>
+</header>
+
+<div class="order-confirmation">
+  <h2>Confirmar Pedido - Dirección y Pago</h2>
+
+  <div class="shipping-method">
+    <h3>Método de Envío</h3>
+    <label><input type="radio" name="shipping" [(ngModel)]="shippingMethod" value="envio" checked> Envío</label>
+    <label><input type="radio" name="shipping" [(ngModel)]="shippingMethod" value="recojo"> Recoger en bodega</label>
+    <p>Puedes pasar a recoger tu orden hoy. Recibirás una notificación cuando tu orden esté lista.</p>
+  </div>
+
+  <div class="address-selection">
+    <h3>Dirección de Entrega</h3>
+    <select [(ngModel)]="selectedDepartamento" [ngClass]="{'error': submitted && !selectedDepartamento}">
+      <option value="" disabled selected>Selecciona un departamento</option>
+      <option value="guatemala">Guatemala</option>
+    </select>
+    <small *ngIf="submitted && !selectedDepartamento" class="error-message">Este campo es necesario</small>
+
+    <select [(ngModel)]="selectedMunicipio" [ngClass]="{'error': submitted && !selectedMunicipio}">
+      <option value="" disabled selected>Selecciona un municipio</option>
+      <option value="guatemala">Ciudad de Guatemala</option>
+    </select>
+    <small *ngIf="submitted && !selectedMunicipio" class="error-message">Este campo es necesario</small>
+
+    <input type="text" placeholder="Dirección exacta" [(ngModel)]="direccion" [ngClass]="{'error': submitted && !direccion.trim()}" required>
+    <small *ngIf="submitted && !direccion.trim()" class="error-message">Este campo es necesario</small>
+
+    <input type="text" placeholder="Nombre de quien recibe" [(ngModel)]="nombreReceptor" [ngClass]="{'error': submitted && !nombreReceptor.trim()}" required>
+    <small *ngIf="submitted && !nombreReceptor.trim()" class="error-message">Este campo es necesario</small>
+
+    <input type="text" placeholder="Teléfono de contacto" [(ngModel)]="telefono" [ngClass]="{'error': submitted && !telefono.trim()}" required>
+    <small *ngIf="submitted && !telefono.trim()" class="error-message">Este campo es necesario</small>
+  </div>
+
+  <div class="billing-info">
+    <h3>Información de Facturación</h3>
+    <input type="text" placeholder="NIT" [(ngModel)]="nit" [ngClass]="{'error': submitted && !nit.trim()}" required>
+    <small *ngIf="submitted && !nit.trim()" class="error-message">Este campo es necesario</small>
+
+    <input type="text" placeholder="Nombre Completo" [(ngModel)]="nombreCompletoFactura" [ngClass]="{'error': submitted && !nombreCompletoFactura.trim()}" required>
+    <small *ngIf="submitted && !nombreCompletoFactura.trim()" class="error-message">Este campo es necesario</small>
+
+    <input type="text" placeholder="Dirección" [(ngModel)]="direccionFactura">
+  </div>
+
+  <div class="payment-method">
+    <h3>Método de Pago</h3>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMethod" value="tarjeta" checked> Tarjeta de Crédito o Débito</label>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMethod" value="transferencia"> Transferencia bancaria</label>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMethod" value="efectivo"> Efectivo en Entrega</label>
+  </div>
+
+  <div class="payment-details" *ngIf="paymentMethod === 'tarjeta'">
+    <h3>Detalles del Pago</h3>
+    <input type="text" placeholder="Número de Tarjeta" [(ngModel)]="cardNumber" [ngClass]="{'error': submitted && paymentMethod === 'tarjeta' && !cardNumber.trim()}" required>
+    <small *ngIf="submitted && paymentMethod === 'tarjeta' && !cardNumber.trim()" class="error-message">Este campo es necesario</small>
+
+    <input type="text" placeholder="Fecha de expiración (MM/AA)" [(ngModel)]="expiryDate" [ngClass]="{'error': submitted && paymentMethod === 'tarjeta' && !expiryDate.trim()}" required>
+    <small *ngIf="submitted && paymentMethod === 'tarjeta' && !expiryDate.trim()" class="error-message">Este campo es necesario</small>
+
+    <input type="text" placeholder="Nombre del Titular de la Tarjeta" [(ngModel)]="cardName" [ngClass]="{'error': submitted && paymentMethod === 'tarjeta' && !cardName.trim()}" required>
+    <small *ngIf="submitted && paymentMethod === 'tarjeta' && !cardName.trim()" class="error-message">Este campo es necesario</small>
+
+    <input type="text" placeholder="Código de Seguridad / CVV2" [(ngModel)]="cvv" [ngClass]="{'error': submitted && paymentMethod === 'tarjeta' && !cvv.trim()}" required>
+    <small *ngIf="submitted && paymentMethod === 'tarjeta' && !cvv.trim()" class="error-message">Este campo es necesario</small>
+  </div>
+
+  <div class="order-summary">
+    <h3>Resumen de Compra</h3>
+    <div *ngFor="let item of items" class="item">
+      <p>{{ item.product.title }}</p>
+      <p>{{ item.product.price | currency }}</p>
+      <p>Cantidad: {{ item.quantity }}</p>
+    </div>
+
+    <p>Costo de envío: Q0.00</p>
+    <p>Subtotal: {{ total | currency }}</p>
+    <p><strong>Total: {{ total | currency }}</strong></p>
+  </div>
+
+  <button (click)="onFinalizeOrder()">Finalizar Pedido</button>
+</div>
+
+<div *ngIf="showConfirmation" class="confirmation-modal">
+  <div class="confirmation-content">
+    <h2>Compra Exitosa</h2>
+    <p>Gracias por su compra. Aquí está su factura:</p>
+    <div class="order-summary">
+      <h3>Detalles del Pedido:</h3>
+      <div *ngFor="let item of items" class="item">
+        <p>Producto: {{ item.product.title }}</p>
+        <p>Precio: {{ item.product.price | currency }}</p>
+        <p>Cantidad: {{ item.quantity }}</p>
+        <p>Subtotal: {{ (item.product.price * item.quantity) | currency }}</p>
+      </div>
+      <p>Costo de envío: Q0.00</p>
+      <p><strong>Total: {{ total | currency }}</strong></p>
+    </div>
+    <button (click)="closeConfirmation()">Cerrar</button>
+  </div>
+</div>
+
+

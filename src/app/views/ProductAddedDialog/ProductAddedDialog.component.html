@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Producto Agregado</h1>
+<div mat-dialog-content>
+  <img [src]="data.image" alt="{{ data.title }}" class="product-image">
+  <h2>{{ data.title }}</h2>
+  <p class="producto-precio"><strong>{{ data.price | currency }}</strong></p>
+  <p>{{ data.description }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Continuar Comprando</button>
+  <button mat-button [mat-dialog-close]="'view-cart'">Ver Carrito</button>
+  <button mat-button [mat-dialog-close]="'checkout'">Comprar ahora</button>
+</div>

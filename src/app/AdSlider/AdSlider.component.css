@@ -1,0 +1,34 @@
+.ad-slider {
+  width: auto;
+  margin: 20px auto;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.ad-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ad-details {
+  padding: 10px;
+}
+
+.ad-details h2 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.ad-details p {
+  font-size: 14px;
+}
+
+
+
+

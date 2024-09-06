@@ -1,0 +1,72 @@
+
+
+<header class="header">
+  <a routerLink="/home" class="store-name">Fake Store</a>
+</header>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" position="start" class="sidenav">
+    <mat-nav-list>
+      <mat-list-item
+        *ngFor="let category of categories"
+        (click)="onCategorySelect(category)"
+        [class.selected]="selectedCategory === category"
+      >
+        <mat-icon [ngSwitch]="category">
+          <ng-container *ngSwitchCase="'electronics'">devices</ng-container>
+          <ng-container *ngSwitchCase="'men\'s clothing'">style</ng-container>
+          <ng-container *ngSwitchCase="'jewelery'">storefront</ng-container>
+          <ng-container *ngSwitchCase="'women\'s clothing'">style</ng-container>
+        </mat-icon>
+        {{ category | titlecase }}
+        <mat-icon class="arrow-icon">chevron_right</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="top-bar">
+      <button mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="right-section">
+        <div class="search-bar">
+          <div class="search-container">
+            <input matInput [(ngModel)]="searchQuery" placeholder="Buscar...">
+            <button mat-icon-button (click)="onSearchQuery()">
+              <mat-icon>search</mat-icon>
+            </button>
+            <button mat-icon-button (click)="checkCart()" aria-label="Shopping Cart">
+              <mat-icon>shopping_cart</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="redirectToProfile()" aria-label="User Profile">
+              <mat-icon>person</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-product-list [products]="filteredProducts" [selectedCategory]="selectedCategory"></app-product-list>
+
+    <div *ngIf="filteredProducts.length === 0 && selectedCategory">
+      <p>No se encontraron productos para la categoría "{{ selectedCategory }}"</p>
+    </div>
+
+    <div *ngIf="filteredProducts.length === 0 && !selectedCategory">
+      <p>Selecciona una categoría para ver productos.</p>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<app-ad-slider></app-ad-slider>
+
+
+
+
+
+
+
+
+

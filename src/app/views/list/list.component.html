@@ -1,0 +1,13 @@
+<header>
+  <a href="/home" class="store-name">Fake Store</a>
+</header>
+<div *ngFor="let product of products" class="product">
+  <img [src]="product.image" alt="{{ product.title }}" class="product-image">
+  <h3>{{ product.title }}</h3>
+  <p>{{ product.price | currency }}</p>
+  <button (click)="viewProductDetail(product.id)">Ver producto</button>
+</div>
+
+
+
+

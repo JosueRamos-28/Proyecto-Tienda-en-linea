@@ -1,0 +1,19 @@
+<div *ngIf="products.length > 0">
+  <div class="product-list">
+    <div *ngFor="let product of products" class="product">
+      <img [src]="product.image" alt="{{ product.title }}" class="product-image">
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.description }}</p>
+      <p><strong>{{ product.price | currency }}</strong></p>
+      <button mat-button (click)="viewProduct(product.id)">Ver producto</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="products.length === 0 && selectedCategory">
+  <p>No se encontraron productos para la categoría "{{ selectedCategory }}"</p>
+</div>
+
+<div *ngIf="products.length === 0 && !selectedCategory">
+  <p>Selecciona una categoría para ver productos.</p>
+</div>

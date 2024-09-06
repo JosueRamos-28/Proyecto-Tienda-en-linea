@@ -1,0 +1,11 @@
+<div class="ad-slider" *ngIf="products.length > 0">
+  <div class="ad-item">
+    <img [src]="currentAd.image" alt="{{ currentAd.title }}" class="ad-image">
+    <div class="ad-details">
+      <h2>{{ currentAd.title }}</h2>
+      <p>{{ currentAd.description }}</p>
+      <p><strong>{{ currentAd.price | currency }}</strong></p>
+    </div>
+  </div>
+</div>
+

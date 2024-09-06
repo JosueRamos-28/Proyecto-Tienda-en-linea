@@ -1,0 +1,42 @@
+<header>
+  <a href="/home" class="store-name">Fake Store</a>
+</header>
+
+  <div class="right-section">
+    <div class="search-bar">
+      <div class="search-container">
+        <input matInput [(ngModel)]="searchQuery" (input)="onSearch($event)" placeholder="Buscar...">
+        <button mat-icon-button (click)="onSearchQuery()">
+          <mat-icon>search</mat-icon>
+        </button>
+        <button mat-icon-button (click)="checkCart()" aria-label="Shopping Cart">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="product">
+    <div class="producto-contenedor">
+      <img [src]="product.image" alt="{{ product.title }}" class="producto-imagen">
+      <h1>{{ product.title }}</h1>
+      <p class="producto-descripcion">{{ product.description }}</p>
+      <div class="etiqueta-oferta" style="position: static; margin-bottom: 10px;">Super Oferta</div>
+      <p class="producto-precio"><strong>{{ product.price | currency }}</strong></p>
+      <p class="entrega-rapida">Entrega en menos de 24 horas</p>
+      <div class="button-container">
+        <button class="boton add-to-cart" (click)="addToCart()">Agregar al Carrito</button>
+        <button class="boton gradient" (click)="buyNow()">Comprar Ahora</button>
+      </div>
+    </div>
+  </div>
+
+  <app-ad-slider></app-ad-slider>
+
+
+
+
+
+
+
+

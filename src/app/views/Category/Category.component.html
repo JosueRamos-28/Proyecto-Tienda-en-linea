@@ -1,0 +1,72 @@
+<header>
+  <a href="/home" class="store-name">Fake Store</a>
+</header>
+<mat-sidenav-container class="sidenav-container">
+  <!-- Barra lateral (sidenav) -->
+  <mat-sidenav #sidenav mode="side" position="start" class="sidenav">
+    <mat-nav-list>
+      <mat-list-item *ngFor="let category of categories" (click)="onCategorySelect(category)">
+        <mat-icon [ngSwitch]="category">
+          <ng-container *ngSwitchCase="'electronics'">devices</ng-container>
+          <ng-container *ngSwitchCase="'men\'s clothing'">style</ng-container>
+          <ng-container *ngSwitchCase="'jewelery'">store</ng-container>
+          <ng-container *ngSwitchCase="'women\'s clothing'">style</ng-container>
+        </mat-icon>
+        {{ category | titlecase }}
+        <mat-icon class="arrow-icon">chevron_right</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <div class="top-bar">
+      <button mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div class="right-section">
+        <div class="search-bar">
+          <div class="search-container">
+            <input matInput [(ngModel)]="searchQuery" (input)="onSearch($event)" placeholder="Buscar...">
+            <button mat-icon-button (click)="onSearchQuery()">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+        </div>
+        <button mat-icon-button aria-label="Shopping Cart">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mostrar productos en la categoría seleccionada -->
+    <div *ngIf="filteredProducts.length > 0; else noProducts">
+      <div class="product-list">
+        <div *ngFor="let product of filteredProducts" class="product">
+          <img [src]="product.image" alt="{{ product.title }}" class="product-image">
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.description }}</p>
+          <p><strong>{{ product.price | currency }}</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noProducts>
+      <div *ngIf="selectedCategory">
+        <p>No se encontraron productos para la categoría "{{ selectedCategory }}"</p>
+      </div>
+      <div *ngIf="!selectedCategory">
+        <p>Selecciona una categoría para ver productos.</p>
+      </div>
+    </ng-template>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<button mat-icon-button (click)="checkCart()" aria-label="Shopping Cart">
+  <mat-icon>shopping_cart</mat-icon>
+</button>
+<app-ad-slider></app-ad-slider>
+
+
+
+
+

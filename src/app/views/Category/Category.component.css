@@ -1,0 +1,141 @@
+.sidenav-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidenav {
+  width: 250px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #e0e0e0;
+}
+
+.sidenav-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin-right: 20px;
+  width: 100%;
+  width: 1100px;
+  justify-content: flex-end;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.search-container input {
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-container button {
+  background-color: #007bff;
+  color: #ffffff;
+  border-radius: 0 4px 4px 0;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-container button mat-icon {
+  font-size: 20px;
+}
+
+mat-icon-button[aria-label="Shopping Cart"] {
+  background-color: #007bff;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+mat-icon-button[aria-label="Toggle menu"] {
+  background-color: #007bff;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+}
+
+
+.product h3 {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.product p {
+  font-size: 14px;
+  color: #777;
+  margin: 5px 0;
+}
+.store-name {
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
+  color: #28a745;
+  background: linear-gradient(45deg, #ff5050, #ffcc00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  text-align: center;
+  margin: 20px auto;
+  transition: color 0.3s ease;
+}
+
+.store-name:hover {
+  color: #e60000;
+}
